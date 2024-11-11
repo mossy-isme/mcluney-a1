@@ -3,7 +3,7 @@ package src;
 import java.util.ArrayList;
 
 public class AssignmentOne {
-    static ArrayList<Appointment> appointmentList;
+    static ArrayList<Appointment> appointmentList = new ArrayList<>();
 
     public static class HealthProfessional {
         // HealthProfessional instance variables
@@ -88,14 +88,14 @@ public class AssignmentOne {
 
     public static class Patient {
         private String name;
-        private int phoneNumber;
+        private String phoneNumber;
 
         // Default constructor
         public Patient() {
         }
 
         // Parametised constructor for class Patient
-        public Patient(String name, int phoneNumber) {
+        public Patient(String name, String phoneNumber) {
             this.name = name;
             this.phoneNumber = phoneNumber;
         }
@@ -108,8 +108,13 @@ public class AssignmentOne {
         }
 
         // phoneNumber getter.
-        public int getPhoneNumber() {
+        public String getPhoneNumber() {
             return phoneNumber;
+        }
+
+        // name getter.
+        public String getName() {
+            return name;
         }
     }
 
@@ -132,7 +137,7 @@ public class AssignmentOne {
         // Print appointment info
         public void printInfo() {
             System.out.println("The appointment details are:");
-            System.out.println(patient);
+            System.out.println(((Patient) patient).getName());
             System.out.println(preferredTimeSlot);
             System.out.println(selectedDoctor.name);
         }
@@ -179,14 +184,15 @@ public class AssignmentOne {
             System.out.println("Appointment list empty.");
         } else {
             for (Appointment i : appointmentList) {
-                System.out.println(i);
+                i.printInfo();
+                System.out.println("\n");
             }
         }
     }
 
     // Cancel existing booking
 
-    public static void cancelBooking(int phoneNumber) {
+    public static void cancelBooking(String phoneNumber) {
         boolean found = false;
         for (Appointment appointment: appointmentList) {
             Object patient = appointment.getPatient();
@@ -216,7 +222,7 @@ public class AssignmentOne {
 
         Object[] doctors = { gp1, gp2, gp3, ahp1, ahp2 };
 
-        for (var i : doctors) {
+        for (Object i : doctors) {
             ((HealthProfessional) i).printInfo();
             System.out.println("\n");
         }
@@ -224,6 +230,25 @@ public class AssignmentOne {
         System.out.println("------------------------------");
 
         // Part 5 - Collection of Appointments
+
+        Patient MC = new Patient("Mossy Cluney", "0400038834");
+        Patient WG = new Patient("William George", "0493283485");
+        Patient LB = new Patient("Liam Bordon", "0423381234");
+        Patient BJ = new Patient("Briah Jefferies", "0402393823");
+
+
+        createAppointment(MC, "08:00", gp1);
+        createAppointment(WG, "12:00", gp3);
+        createAppointment(LB, "09:00", ahp1);
+        createAppointment(BJ, "03:00", ahp2);
+
+        printExistingAppointments();
+
+        cancelBooking(MC.phoneNumber);
+
+        printExistingAppointments();
+
+        System.out.println("------------------------------");
 
     };
 
