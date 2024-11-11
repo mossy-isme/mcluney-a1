@@ -1,17 +1,12 @@
 package src;
 
 public class AssignmentOne {
-    public static void main(String[] args){
 
-		System.out.println("Hello, World!");
-	
-    }
-
-    class HealthProfessional {
+    public static class HealthProfessional {
         // HealthProfessional instance variables
         private int ID;
         private String name;
-        private String availability;
+        private Boolean available;
 
 
         // Default constructor
@@ -21,15 +16,15 @@ public class AssignmentOne {
         /**
          * Parametised constructor for objects of class HealthProfessional
          */
-        public HealthProfessional(int ID, String name, String availability) {
+        public HealthProfessional(int ID, String name, Boolean available) {
             this.ID = ID;
             this.name = name;
-            this.availability = availability;
+            this.available = available;
         }
 
         // Setter for availability of HealthProfessional objects
-        public void setAvailability(String availability) {
-            this.availability = availability;
+        public void setAvailability(Boolean available) {
+            this.available = available;
         }
 
         /**
@@ -38,12 +33,12 @@ public class AssignmentOne {
         public void printInfo() {
             System.out.println("ID: " + ID);
             System.out.println("Name: " + name);
-            System.out.println("Availability: " + availability);
+            System.out.println("Available?: " + available);
         }
 
     }
 
-    class GeneralPractitioner extends HealthProfessional {
+    public static class GeneralPractitioner extends HealthProfessional {
         private int numberOfPatients;
 
         // Default constructor
@@ -53,8 +48,8 @@ public class AssignmentOne {
         /**
          * Parametised constructor for objects of child class GeneralPractitoner
          */
-        public GeneralPractitioner(int ID, String name, String availability, int numberOfPatients) {
-            super(ID, name, availability);
+        public GeneralPractitioner(int ID, String name, Boolean available, int numberOfPatients) {
+            super(ID, name, available);
             this.numberOfPatients = numberOfPatients;
         }
 
@@ -66,7 +61,7 @@ public class AssignmentOne {
         }
     }
 
-    class AlliedHealthProfessional extends HealthProfessional {
+    public static class AlliedHealthProfessional extends HealthProfessional {
         private String speciality;
 
         // Default constructor
@@ -74,10 +69,10 @@ public class AssignmentOne {
         }
 
         /**
-         * Parametised constructor for objects of child class GeneralPractitoner
+         * Parametised constructor for objects of child class AlliedHealthProfessional
          */
-        public AlliedHealthProfessional(int ID, String name, String availability, String speciality) {
-            super(ID, name, availability);
+        public AlliedHealthProfessional(int ID, String name, Boolean available, String speciality) {
+            super(ID, name, available);
             this.speciality = speciality;
         }
 
@@ -87,9 +82,29 @@ public class AssignmentOne {
             super.printInfo();
             System.out.println("Speciality: " + speciality);
         }
-    }
+    };
 
-    // Part 3 - Using classes and objects
 
-};
+// Part 3 - Using classes and objects
+    
+        public static void main(String[] args){
+    
+            GeneralPractitioner gp1 = new GeneralPractitioner(1,"Dr Grant Rogers",false,20);
+            GeneralPractitioner gp2 = new GeneralPractitioner(1,"Dr Jenni Soden",true,10);
+            GeneralPractitioner gp3 = new GeneralPractitioner(1,"Dr Brent Williams",true,14);
 
+            AlliedHealthProfessional ahp1 = new AlliedHealthProfessional(1,"Dr Renae Paul",false,"Psychology");
+            AlliedHealthProfessional ahp2 = new AlliedHealthProfessional(1,"Dr Liz Forsyth",true,"Dietitian");
+
+            Object[] doctors = {gp1,gp2,gp3,ahp1,ahp2};
+
+            for (var i : doctors) {
+                ((HealthProfessional) i).printInfo();
+                System.out.println("\n");
+            }
+
+            System.out.println("------------------------------");
+
+    };
+
+}
