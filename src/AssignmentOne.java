@@ -84,6 +84,48 @@ public class AssignmentOne {
         }
     };
 
+    public static class Patient {
+        private String name;
+        private int phoneNumber;
+
+        // Default constructor
+        public Patient() {
+        }
+
+        // Parametised constructor for class Patient
+        public Patient(String name, int phoneNumber) {
+            this.name = name;
+            this.phoneNumber = phoneNumber;
+        }
+
+        public void printInfo() {
+            System.out.println("The patients details are:");
+            System.out.println(name);
+            System.out.println(phoneNumber)
+        }
+    }
+
+    public static class Appointment {
+        private String preferredTimeSlot;
+        private HealthProfessional selectedDoctor;
+
+        //Default constructor
+        public Appointment() {
+        }
+        
+        //Parametised constructor for class Patient
+        public Appointment(String preferredTimeSlot, HealthProfessional selectedDoctor) {
+            this.preferredTimeSlot = preferredTimeSlot;
+            this.selectedDoctor = selectedDoctor;
+        }
+        
+        public void printInfo() {
+            System.out.println("The appointment details are:");
+            System.out.println(preferredTimeSlot);
+            System.out.println(selectedDoctor.name);
+        }
+    }
+
 
 // Part 3 - Using classes and objects
     
