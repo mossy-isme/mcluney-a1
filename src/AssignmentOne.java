@@ -13,6 +13,7 @@ public class AssignmentOne {
         private String name;
         private String availability;
 
+
         // Default constructor
         public HealthProfessional() {
         }
@@ -23,6 +24,11 @@ public class AssignmentOne {
         public HealthProfessional(int ID, String name, String availability) {
             this.ID = ID;
             this.name = name;
+            this.availability = availability;
+        }
+
+        // Setter for availability of HealthProfessional objects
+        public void setAvailability(String availability) {
             this.availability = availability;
         }
 
@@ -59,6 +65,31 @@ public class AssignmentOne {
             System.out.println("Number of Patients: " + numberOfPatients);
         }
     }
+
+    class AlliedHealthProfessional extends HealthProfessional {
+        private String speciality;
+
+        // Default constructor
+        public AlliedHealthProfessional() {
+        }
+
+        /**
+         * Parametised constructor for objects of child class GeneralPractitoner
+         */
+        public AlliedHealthProfessional(int ID, String name, String availability, String speciality) {
+            super(ID, name, availability);
+            this.speciality = speciality;
+        }
+
+        //Method to print details, including the health professional type
+        public void printInfo() {
+            System.out.println("The health professional details are (Allied Health Professional):");
+            super.printInfo();
+            System.out.println("Speciality: " + speciality);
+        }
+    }
+
+    // Part 3 - Using classes and objects
 
 };
 
