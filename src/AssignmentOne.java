@@ -4,145 +4,203 @@ import java.util.ArrayList;
 
 public class AssignmentOne {
     static ArrayList<Appointment> appointmentList;
-    
-        public static class HealthProfessional {
-            // HealthProfessional instance variables
-            private int ID;
-            private String name;
-            private Boolean available;
-    
-            // Default constructor
-            public HealthProfessional() {
-            }
-    
-            /**
-             * Parametised constructor for objects of class HealthProfessional
-             */
-            public HealthProfessional(int ID, String name, Boolean available) {
-                this.ID = ID;
-                this.name = name;
-                this.available = available;
-            }
-    
-            // Setter for availability of HealthProfessional objects
-            public void setAvailability(Boolean available) {
-                this.available = available;
-            }
-    
-            /**
-             * Method to print all instance variables
-             */
-            public void printInfo() {
-                System.out.println("ID: " + ID);
-                System.out.println("Name: " + name);
-                System.out.println("Available?: " + available);
-            }
-    
+
+    public static class HealthProfessional {
+        // HealthProfessional instance variables
+        private int ID;
+        private String name;
+        private Boolean available;
+
+        // Default constructor
+        public HealthProfessional() {
         }
-    
-        public static class GeneralPractitioner extends HealthProfessional {
-            private int numberOfPatients;
-    
-            // Default constructor
-            public GeneralPractitioner() {
-            }
-    
-            /**
-             * Parametised constructor for objects of child class GeneralPractitoner
-             */
-            public GeneralPractitioner(int ID, String name, Boolean available, int numberOfPatients) {
-                super(ID, name, available);
-                this.numberOfPatients = numberOfPatients;
-            }
-    
-            // Method to print details, including the health professional type
-            public void printInfo() {
-                System.out.println("The health professional details are (General Practitoner):");
-                super.printInfo();
-                System.out.println("Number of Patients: " + numberOfPatients);
+
+        /**
+         * Parametised constructor for objects of class HealthProfessional
+         */
+        public HealthProfessional(int ID, String name, Boolean available) {
+            this.ID = ID;
+            this.name = name;
+            this.available = available;
+        }
+
+        // Setter for availability of HealthProfessional objects
+        public void setAvailability(Boolean available) {
+            this.available = available;
+        }
+
+        /**
+         * Method to print all instance variables
+         */
+        public void printInfo() {
+            System.out.println("ID: " + ID);
+            System.out.println("Name: " + name);
+            System.out.println("Available?: " + available);
+        }
+
+    }
+
+    public static class GeneralPractitioner extends HealthProfessional {
+        private int numberOfPatients;
+
+        // Default constructor
+        public GeneralPractitioner() {
+        }
+
+        /**
+         * Parametised constructor for objects of child class GeneralPractitoner
+         */
+        public GeneralPractitioner(int ID, String name, Boolean available, int numberOfPatients) {
+            super(ID, name, available);
+            this.numberOfPatients = numberOfPatients;
+        }
+
+        // Method to print details, including the health professional type
+        public void printInfo() {
+            System.out.println("The health professional details are (General Practitoner):");
+            super.printInfo();
+            System.out.println("Number of Patients: " + numberOfPatients);
+        }
+    }
+
+    public static class AlliedHealthProfessional extends HealthProfessional {
+        private String speciality;
+
+        // Default constructor
+        public AlliedHealthProfessional() {
+        }
+
+        /**
+         * Parametised constructor for objects of child class AlliedHealthProfessional
+         */
+        public AlliedHealthProfessional(int ID, String name, Boolean available, String speciality) {
+            super(ID, name, available);
+            this.speciality = speciality;
+        }
+
+        // Method to print details, including the health professional type
+        public void printInfo() {
+            System.out.println("The health professional details are (Allied Health Professional):");
+            super.printInfo();
+            System.out.println("Speciality: " + speciality);
+        }
+    };
+
+    public static class Patient {
+        private String name;
+        private int phoneNumber;
+
+        // Default constructor
+        public Patient() {
+        }
+
+        // Parametised constructor for class Patient
+        public Patient(String name, int phoneNumber) {
+            this.name = name;
+            this.phoneNumber = phoneNumber;
+        }
+
+        // Method to display info relating to the Patient
+        public void printInfo() {
+            System.out.println("The patients details are:");
+            System.out.println(name);
+            System.out.println(phoneNumber);
+        }
+
+        // phoneNumber getter.
+        public int getPhoneNumber() {
+            return phoneNumber;
+        }
+    }
+
+    public static class Appointment {
+        private Object patient;
+        private String preferredTimeSlot;
+        private HealthProfessional selectedDoctor;
+
+        // Default constructor
+        public Appointment() {
+        }
+
+        // Parametised constructor for class Patient
+        public Appointment(Patient patient, String preferredTimeSlot, HealthProfessional selectedDoctor) {
+            this.patient = patient;
+            this.preferredTimeSlot = preferredTimeSlot;
+            this.selectedDoctor = selectedDoctor;
+        }
+
+        // Print appointment info
+        public void printInfo() {
+            System.out.println("The appointment details are:");
+            System.out.println(patient);
+            System.out.println(preferredTimeSlot);
+            System.out.println(selectedDoctor.name);
+        }
+
+        public Object getPatient() {
+            return patient;
+        }
+
+        public String getPreferredTimeSlot() {
+            return preferredTimeSlot;
+        }
+
+        public HealthProfessional getSelectedDoctor() {
+            return selectedDoctor;
+        }
+    }
+
+    // Create appointment
+    public static void createAppointment(Patient patient, String preferredTimeSlot, HealthProfessional selectedDoctor) {
+        boolean found = false;
+        if (patient == null || preferredTimeSlot == null || selectedDoctor == null) {
+            System.out.println("Error: All required information must be provided to book an appointment.");
+        }
+
+        for (Appointment appointment : appointmentList) {
+            if (appointment.getSelectedDoctor() == selectedDoctor
+                    && appointment.getPreferredTimeSlot() == preferredTimeSlot) {
+                System.out.println("Doctor is already booked during this time. Please try again.");
+                found = true;
+                break;
             }
         }
-    
-        public static class AlliedHealthProfessional extends HealthProfessional {
-            private String speciality;
-    
-            // Default constructor
-            public AlliedHealthProfessional() {
-            }
-    
-            /**
-             * Parametised constructor for objects of child class AlliedHealthProfessional
-             */
-            public AlliedHealthProfessional(int ID, String name, Boolean available, String speciality) {
-                super(ID, name, available);
-                this.speciality = speciality;
-            }
-    
-            // Method to print details, including the health professional type
-            public void printInfo() {
-                System.out.println("The health professional details are (Allied Health Professional):");
-                super.printInfo();
-                System.out.println("Speciality: " + speciality);
-            }
-        };
-    
-        public static class Patient {
-            private String name;
-            private int phoneNumber;
-    
-            // Default constructor
-            public Patient() {
-            }
-    
-            // Parametised constructor for class Patient
-            public Patient(String name, int phoneNumber) {
-                this.name = name;
-                this.phoneNumber = phoneNumber;
-            }
-    
-            public void printInfo() {
-                System.out.println("The patients details are:");
-                System.out.println(name);
-                System.out.println(phoneNumber);
-            }
-        }
-    
-        public static class Appointment {
-            private Object patient;
-            private String preferredTimeSlot;
-            private HealthProfessional selectedDoctor;
-    
-            // Default constructor
-            public Appointment() {
-            }
-    
-            // Parametised constructor for class Patient
-            public Appointment(Patient patient, String preferredTimeSlot, HealthProfessional selectedDoctor) {
-                this.patient = patient;
-                this.preferredTimeSlot = preferredTimeSlot;
-                this.selectedDoctor = selectedDoctor;
-            }
-    
-            // Print appointment info
-            public void printInfo() {
-                System.out.println("The appointment details are:");
-                System.out.println(patient);
-                System.out.println(preferredTimeSlot);
-                System.out.println(selectedDoctor.name);
-            }
-    
-        }
-    
-        // Create appointment
-        public static void createAppointment(Patient patient, String preferredTimeSlot, HealthProfessional selectedDoctor) {
-            if (patient == null || preferredTimeSlot == null || selectedDoctor == null) {
-                System.out.println("Error: All required information must be provided to book an appointment.");
-            }
-    
+        if (!found) {
             Appointment newAppointment = new Appointment(patient, preferredTimeSlot, selectedDoctor);
             appointmentList.add(newAppointment);
             System.out.println("Appointment created successfully for: " + patient.name);
+        }
+    }
 
+    // Print existing appointments in ArrayList
+
+    public static void printExistingAppointments() {
+        if (appointmentList == null) {
+            System.out.println("Appointment list empty.");
+        } else {
+            for (Appointment i : appointmentList) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    // Cancel existing booking
+
+    public static void cancelBooking(int phoneNumber) {
+        boolean found = false;
+        for (Appointment appointment: appointmentList) {
+            Object patient = appointment.getPatient();
+            
+            if (((Patient) patient).getPhoneNumber() == phoneNumber) {
+                appointmentList.remove(appointment);
+                System.out.println("Appointment for phone number " + phoneNumber + " has been cancelled.");
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Error: Appointment with phone number " + phoneNumber + " not found.");
+        }
     }
 
     public static void main(String[] args) {
