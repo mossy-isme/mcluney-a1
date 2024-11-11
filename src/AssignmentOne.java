@@ -56,7 +56,7 @@ public class AssignmentOne {
         public void printInfo() {
             System.out.println("The health professional details are (General Practitoner):");
             super.printInfo();
-            System.out.println("Number of Patients: " + numberOfPatients)
+            System.out.println("Number of Patients: " + numberOfPatients);
         }
     }
 
