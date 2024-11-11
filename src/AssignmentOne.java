@@ -101,7 +101,7 @@ public class AssignmentOne {
         public void printInfo() {
             System.out.println("The patients details are:");
             System.out.println(name);
-            System.out.println(phoneNumber)
+            System.out.println(phoneNumber);
         }
     }
 
