@@ -194,9 +194,9 @@ public class AssignmentOne {
 
     public static void cancelBooking(String phoneNumber) {
         boolean found = false;
-        for (Appointment appointment: appointmentList) {
+        for (Appointment appointment : appointmentList) {
             Object patient = appointment.getPatient();
-            
+
             if (((Patient) patient).getPhoneNumber() == phoneNumber) {
                 appointmentList.remove(appointment);
                 System.out.println("Appointment for phone number " + phoneNumber + " has been cancelled.");
@@ -235,7 +235,6 @@ public class AssignmentOne {
         Patient WG = new Patient("William George", "0493283485");
         Patient LB = new Patient("Liam Bordon", "0423381234");
         Patient BJ = new Patient("Briah Jefferies", "0402393823");
-
 
         createAppointment(MC, "08:00", gp1);
         createAppointment(WG, "12:00", gp3);
