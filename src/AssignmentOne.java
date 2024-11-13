@@ -56,6 +56,7 @@ public class AssignmentOne {
         }
 
         // Method to print details, including the health professional type
+        @Override
         public void printInfo() {
             System.out.println("The health professional details are (General Practitoner):");
             super.printInfo();
@@ -79,6 +80,7 @@ public class AssignmentOne {
         }
 
         // Method to print details, including the health professional type
+        @Override
         public void printInfo() {
             System.out.println("The health professional details are (Allied Health Professional):");
             super.printInfo();
@@ -164,7 +166,7 @@ public class AssignmentOne {
 
         for (Appointment appointment : appointmentList) {
             if (appointment.getSelectedDoctor() == selectedDoctor
-                    && appointment.getPreferredTimeSlot() == preferredTimeSlot) {
+                    && appointment.getPreferredTimeSlot().equals(preferredTimeSlot)) {
                 System.out.println("Doctor is already booked during this time. Please try again.");
                 found = true;
                 break;
@@ -197,7 +199,7 @@ public class AssignmentOne {
         for (Appointment appointment : appointmentList) {
             Object patient = appointment.getPatient();
 
-            if (((Patient) patient).getPhoneNumber() == phoneNumber) {
+            if (((Patient) patient).getPhoneNumber().equals(phoneNumber)) {
                 appointmentList.remove(appointment);
                 System.out.println("Appointment for phone number " + phoneNumber + " has been cancelled.");
                 found = true;
