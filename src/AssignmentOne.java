@@ -214,11 +214,11 @@ public class AssignmentOne {
         // Part 3 - Using classes and objects
 
         GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr Grant Rogers", false, 20);
-        GeneralPractitioner gp2 = new GeneralPractitioner(1, "Dr Jenni Soden", true, 10);
-        GeneralPractitioner gp3 = new GeneralPractitioner(1, "Dr Brent Williams", true, 14);
+        GeneralPractitioner gp2 = new GeneralPractitioner(2, "Dr Jenni Soden", true, 10);
+        GeneralPractitioner gp3 = new GeneralPractitioner(3, "Dr Brent Williams", true, 14);
 
-        AlliedHealthProfessional ahp1 = new AlliedHealthProfessional(1, "Dr Renae Paul", false, "Psychology");
-        AlliedHealthProfessional ahp2 = new AlliedHealthProfessional(1, "Dr Liz Forsyth", true, "Dietitian");
+        AlliedHealthProfessional ahp1 = new AlliedHealthProfessional(4, "Dr Renae Paul", false, "Psychology");
+        AlliedHealthProfessional ahp2 = new AlliedHealthProfessional(5, "Dr Liz Forsyth", true, "Dietitian");
 
         Object[] doctors = { gp1, gp2, gp3, ahp1, ahp2 };
 
@@ -248,7 +248,7 @@ public class AssignmentOne {
         printExistingAppointments();
 
         System.out.println("------------------------------");
-
+        
     };
 
 }
